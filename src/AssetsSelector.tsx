@@ -122,6 +122,11 @@ const AssetsSelector = ({
         setSelectedItems((selectedItems) => {
             const alreadySelected = selectedItems.indexOf(id) >= 0
             if (
+                Settings.maxSelection == 1 &&
+                !alreadySelected
+            )
+                return [id]
+            if (
                 selectedItems.length >= Settings.maxSelection &&
                 !alreadySelected
             )
