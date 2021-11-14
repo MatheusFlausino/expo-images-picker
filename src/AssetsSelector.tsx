@@ -30,6 +30,7 @@ const AssetsSelector = ({
     Styles,
     Navigator,
     CustomNavigator,
+    CustomAssetList,
 }: AssetSelectorPropTypes): JSX.Element => {
     const getScreen = () => Dimensions.get('screen')
 
@@ -122,7 +123,7 @@ const AssetsSelector = ({
         setSelectedItems((selectedItems) => {
             const alreadySelected = selectedItems.indexOf(id) >= 0
             if (
-                Settings.maxSelection == 1 &&
+                Settings.maxSelection === 1 &&
                 !alreadySelected
             )
                 return [id]
@@ -135,6 +136,10 @@ const AssetsSelector = ({
                 return selectedItems.filter((item) => item !== id)
             else return [...selectedItems, id]
         })
+        
+        if (CustomAssetList?.props && typeof CustomAssetList?.props.onClick === 'function') {
+            CustomAssetList?.props.onClick(id)
+        }
     }, [])
 
     useEffect(() => {

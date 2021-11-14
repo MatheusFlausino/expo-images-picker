@@ -11,6 +11,7 @@ export type AssetSelectorPropTypes = {
     Navigator?: NavigatorType
     Resize?: ResizeType
     CustomNavigator?: CustomNavigator
+    CustomAssetList?: CustomAssetList
 }
 
 export type ResizeType = {
@@ -107,6 +108,11 @@ export type IAssetSelectorError =
     | ''
 
 export type CustomNavigator = {
+    Component: JSXElementConstructor<any> | null
+    props?: any
+}
+
+export type CustomAssetList = {
     Component: JSXElementConstructor<any> | null
     props?: any
 }
